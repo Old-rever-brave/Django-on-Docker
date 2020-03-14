@@ -5,7 +5,7 @@
 ```shell
 $ docker-compose build
 ```
-ざっくり以下のようなことをやっています。
+以下のようなことをやっています。
 
 1. Python のイメージをダウンロード
 2. ダウンロードしたイメージに `pip` を用いて `requirements.txt` に記述のある `django` パッケージをインストール
@@ -13,7 +13,8 @@ $ docker-compose build
 #### Django プロジェクトを作成
 
 ```shell
-$ docker-compose run web django-admin startproject django_project_name .
+docker-compose run web django-admin startproject django_project_name .
+
 ```
 
 最後の `.` を忘れないように注意してください。
@@ -55,7 +56,9 @@ DATABASES = {
 ...
 ```
 
-```bash
+```
+bash
+
 $ docker-compose exec web python manage.py migrate
 ```
 
@@ -75,18 +78,6 @@ $ docker-compose run web pip freeze > requirements.txt
 # manage.py コマンド
 $ docker-compose run web python manage.py createsuperuser
 $ docker-compose run web python manage.py makemigration
-$ ...
 ```
 
 
-# その他の設定箇所とか
-
-1. Django のバージョン指定: requirements.txt でバージョンの指定をする
-1. Python のバージョン指定: Dockerfile の1行目
-1. PostgreSQL のバージョン指定: docker-compose.yml の17行目
-1. apt-get でのパッケージインストール: Dockerfile コメントアウト箇所参照
-
-# docker/wait-for-db.sh て何
-
-DB の準備ができる前に Django から DB へアクセスがあると、エラーで動かなくなってしまうのを防いでいます。
-docker-compose.yml の `depends_on` の記述によって、DB -> Django の順に起動はしてくれるのですが、DB の準備が整うまでは待ってくれないので、環境によってこれがないとうまく動かないことがあります。というか自分はほぼ毎回そうなります。なんとかもうちょっと綺麗に解決したい。
