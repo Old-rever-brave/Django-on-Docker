@@ -13,14 +13,14 @@ $ docker-compose build
 #### Django プロジェクトを作成
 
 ```shell
-docker-compose run web django-admin startproject django_project_name .
+docker-compose run web django-admin startproject django_final .
 
 ```
 
 最後の `.` を忘れないように注意してください。
 
 このコマンドで、 Django プロジェクトに関するファイルが作成されます。
-1. django_project_name ディレクトリ
+1. django_final ディレクトリ
 2. manage.py ファイル
 
 また、docker/postgres/ ディレクトリには PostgreSQL のデータが配置されます。
