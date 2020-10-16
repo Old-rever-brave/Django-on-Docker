@@ -3,7 +3,7 @@
 #### Django 用の Docker イメージを Dockerfile から作成
 
 ```shell
-$ docker-compose build
+$ sudo docker-compose build
 ```
 以下のようなことをやっています。
 
@@ -13,7 +13,7 @@ $ docker-compose build
 #### Django プロジェクトを作成
 
 ```shell
-docker-compose run web django-admin startproject django_final .
+sudo docker-compose run web django-admin startproject django_final .
 
 ```
 
@@ -28,7 +28,7 @@ docker-compose run web django-admin startproject django_final .
 #### 起動
 
 ```shell
-$ docker-compose up
+$ sudo docker-compose up
 ```
 
 http://localhost:8000/ にアクセスして、以下の画面が表示されれば完了です。
@@ -59,7 +59,7 @@ DATABASES = {
 ```
 bash
 
-$ docker-compose exec web python manage.py migrate
+$ sudo docker-compose exec web python manage.py migrate
 ```
 
 migrate に成功すれば完了です。
